@@ -38,8 +38,8 @@
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.ruoyi</groupId>
-            <artifactId>ruoyi-common-redis</artifactId>
+            <groupId>com.zxkj</groupId>
+            <artifactId>zxkj-common-redis</artifactId>
         </dependency>
     </dependencies>
 
