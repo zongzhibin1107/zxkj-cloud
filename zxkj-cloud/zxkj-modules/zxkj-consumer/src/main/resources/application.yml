@@ -1,16 +1,12 @@
 server:
-  port: 9203
+  port: 9202
 spring:
   application:
-    name: zxkj-system
+    name: zxkj-consumer
   cloud:
     nacos:
       discovery:
         server-addr: 192.168.1.25:8848
-    sentinel:
-      transport:
-        dashboard: localhost:8088
-        port: 8791
   redis:
     host: localhost
     port: 6379

@@ -1,7 +1,10 @@
 package com.zxkj.system.controller;
 
+import com.zxkj.common.core.domain.R;
 import com.zxkj.common.redis.service.RedisService;
+import com.zxkj.system.api.domain.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -12,18 +15,20 @@ public class TestController {
 
     @Autowired
     private RedisService redisService;
+    @Value("${server.port}")
+    private String port;
 
     @GetMapping("/test")
-    public Test test() {
+    public R<Test> test() {
         Test test = new Test();
         test.setAge(20);
-        test.setName("张三");
+        test.setName(port);
         redisService.setCacheObject("key1",test,2, TimeUnit.SECONDS);
-        return redisService.getCacheObject("key1");
+        return R.ok(redisService.getCacheObject("key1"));
     }
 
     @GetMapping("/get")
-    public Object get(String key)  {
-        return redisService.getCacheObject(key);
+    public R<String> get(String key)  {
+        return R.ok(redisService.getCacheObject(key));
     }
 }

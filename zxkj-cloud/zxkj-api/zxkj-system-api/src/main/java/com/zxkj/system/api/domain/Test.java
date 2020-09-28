@@ -1,4 +1,4 @@
-package com.zxkj.system.controller;
+package com.zxkj.system.api.domain;
 
 import lombok.Data;
 

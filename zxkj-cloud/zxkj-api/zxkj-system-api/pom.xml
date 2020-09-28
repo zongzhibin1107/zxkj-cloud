@@ -3,21 +3,21 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>zxkj-cloud</artifactId>
+        <artifactId>zxkj-api</artifactId>
         <groupId>com.zxkj</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>zxkj-modules</artifactId>
-    <packaging>pom</packaging>
-
+    <artifactId>zxkj-system-api</artifactId>
     <description>
-        zxkj-modules业务模块
+        zxkj-api-system系统接口模块
     </description>
-    <modules>
-        <module>zxkj-system</module>
-        <module>zxkj-consumer</module>
-    </modules>
+    <dependencies>
+        <dependency>
+            <groupId>com.zxkj</groupId>
+            <artifactId>zxkj-common-core</artifactId>
+        </dependency>
+    </dependencies>
 
 </project>

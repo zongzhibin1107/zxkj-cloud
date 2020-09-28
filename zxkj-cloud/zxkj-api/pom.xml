@@ -9,15 +9,14 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>zxkj-modules</artifactId>
+    <artifactId>zxkj-api</artifactId>
     <packaging>pom</packaging>
 
     <description>
-        zxkj-modules业务模块
+        zxkj-api系统接口
     </description>
     <modules>
-        <module>zxkj-system</module>
-        <module>zxkj-consumer</module>
+        <module>zxkj-system-api</module>
     </modules>
 
 </project>
