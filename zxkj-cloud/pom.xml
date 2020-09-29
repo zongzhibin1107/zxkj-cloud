@@ -11,6 +11,7 @@
         <module>zxkj-modules</module>
         <module>zxkj-common</module>
         <module>zxkj-api</module>
+        <module>zxkj-gate-server</module>
     </modules>
 
 

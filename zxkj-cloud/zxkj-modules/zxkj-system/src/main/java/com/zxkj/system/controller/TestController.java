@@ -18,6 +18,12 @@ public class TestController {
     @Value("${server.port}")
     private String port;
 
+    @Value("${zxkj.test}")
+    private String test;
+    @Value("${zxkj.test1}")
+    private String test1;
+
+
     @GetMapping("/test")
     public R<Test> test() {
         Test test = new Test();
@@ -30,5 +36,10 @@ public class TestController {
     @GetMapping("/get")
     public R<String> get(String key)  {
         return R.ok(redisService.getCacheObject(key));
+    }
+
+    @GetMapping("/testget")
+    public R<String> get(){
+        return R.ok(test + "-" + test1);
     }
 }

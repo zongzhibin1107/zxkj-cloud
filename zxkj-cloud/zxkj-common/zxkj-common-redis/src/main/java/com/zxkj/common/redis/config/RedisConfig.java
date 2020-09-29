@@ -32,16 +32,6 @@ public class RedisConfig extends CachingConfigurerSupport {
     @Autowired
     private RedisConnectionFactory connectionFactory;
 
-    @Override
-    public CacheResolver cacheResolver() {
-        CacheManager redisCacheManager = redisCacheManager();
-        List<CacheManager> list = new ArrayList<>();
-        //如果需要其他缓存机制 比如堆内存机制 可以在这里进行加入
-        // 如果上面设置了其他缓存，则先从其他缓存中读取  如果拿不到则读取redis缓存
-        list.add(redisCacheManager);
-        return super.cacheResolver();
-    }
-
     /**
      * 添加自定义缓存异常处理
      * 当缓存读写异常时,忽略异常
@@ -49,18 +39,6 @@ public class RedisConfig extends CachingConfigurerSupport {
     @Override
     public CacheErrorHandler errorHandler() {
         return new IgnoreExceptionCacheErrorHandler();
-    }
-
-    @Bean
-    public CacheManager redisCacheManager() {
-        RedisSerializationContext.SerializationPair serializationPair =
-                RedisSerializationContext.SerializationPair.fromSerializer(getRedisSerializer());
-        RedisCacheConfiguration redisCacheConfiguration = RedisCacheConfiguration.defaultCacheConfig()
-                .entryTtl(Duration.ofSeconds(30))
-                .serializeValuesWith(serializationPair);
-        return RedisCacheManager
-                .builder(RedisCacheWriter.nonLockingRedisCacheWriter(connectionFactory))
-                .cacheDefaults(redisCacheConfiguration).build();
     }
 
     @Bean
@@ -82,8 +60,5 @@ public class RedisConfig extends CachingConfigurerSupport {
         template.setKeySerializer(new StringRedisSerializer());
         template.afterPropertiesSet();
         return template;
-    }
-    private RedisSerializer<Object> getRedisSerializer(){
-        return new GenericFastJsonRedisSerializer();
     }
 }
