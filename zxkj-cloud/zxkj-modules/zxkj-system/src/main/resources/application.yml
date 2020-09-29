@@ -1,5 +1,5 @@
 server:
-  port: 9203
+  port: 9201
 spring:
   application:
     name: zxkj-system
@@ -7,10 +7,6 @@ spring:
     nacos:
       discovery:
         server-addr: 192.168.1.25:8848
-    sentinel:
-      transport:
-        dashboard: localhost:8088
-        port: 8791
   redis:
     host: localhost
     port: 6379
